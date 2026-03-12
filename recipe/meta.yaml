@@ -1,5 +1,5 @@
 {% set name = "fuzy-jon" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.1" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/fuzy_jon-{{ version }}.tar.gz
-  sha256: d57f75d4bc067b362eaf83b3f9199672cd0dadc8263470a169c9b374d5d89ff6
+  sha256: b48adb8408f69ffa0b03e8f327fea25f8340ee52b5ba49683360bc72afc1cf05
 
 build:
   noarch: python
