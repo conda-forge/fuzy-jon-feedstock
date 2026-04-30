@@ -1,0 +1,45 @@
+schema_version: 1
+
+context:
+  name: fuzy-jon
+  version: "0.2.1"
+  python_min: "3.10"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/fuzy_jon-${{ version }}.tar.gz
+  sha256: b48adb8408f69ffa0b03e8f327fea25f8340ee52b5ba49683360bc72afc1cf05
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python 3.10.*
+    - hatchling
+    - pip
+  run:
+    - python >=${{ python_min }},<4.0.0
+    - json5
+
+tests:
+  - python:
+      imports:
+        - fuzzy_json
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Fuzzy-JSON is a compact Python package with no dependencies, designed to address the pesky JSONDecodeError that sometimes occurs when utilizing OpenAIs powerful call function.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/livingbio/fuzzy-json
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
